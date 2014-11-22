@@ -27,6 +27,14 @@ public class CalculatorServiceImpl implements CalculatorService{
     }
 
 
+    /**
+     * <p>
+     *     method for checking the application level authentication using the username and password provided.
+     * </p>
+     * @param username - username provided as {@link java.lang.String}
+     * @param password - password provided as {@link java.lang.String}
+     * @return {@link java.lang.Boolean} (true if user authenticated, otherwise false)
+     */
     private boolean isAuthenticated(String username, String password){
         if(username!=null && password!=null){
             MessageContext messageContext = webServiceContext.getMessageContext();
