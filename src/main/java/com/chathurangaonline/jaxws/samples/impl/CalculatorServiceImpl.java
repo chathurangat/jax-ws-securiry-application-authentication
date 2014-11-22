@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.jws.WebService;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
+import javax.xml.ws.http.HTTPException;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,15 @@ public class CalculatorServiceImpl implements CalculatorService{
 
     @Override
     public double add(double num1, double num2) {
-        return num1 + num2;
+        //todo username and password was hardcoded only for the demonstration purpose. this should be configured to look up from database or somewhere else
+        if(isAuthenticated("chathuranga","chathu@123")){
+            //allowing the operation for the authenticated user
+            return num1 + num2;
+        }
+        else{
+            //non-authenticated user.
+            throw  new HTTPException(401);
+        }
     }
 
     @Override
