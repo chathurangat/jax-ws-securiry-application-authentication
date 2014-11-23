@@ -52,7 +52,7 @@ public class CalculatorServiceImpl implements CalculatorService{
             List usernameList  = (List) httpHeaders.get("username");
             List passwordList = (List) httpHeaders.get("password");
 
-            if(usernameList.contains(username) && passwordList.contains(password)){
+            if((usernameList!=null && usernameList.contains(username)) && (passwordList!=null && passwordList.contains(password))){
                 return true;
             }
         }
